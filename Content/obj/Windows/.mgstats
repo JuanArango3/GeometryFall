@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player1.png","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/player1.xnb","TextureProcessor","Texture2DContent",48830,2967637,0,2503637
+"C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player2.png","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/player2.xnb","TextureProcessor","Texture2DContent",49391,2967637,0,0943574
