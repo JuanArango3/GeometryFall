@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GeometryFall.Sprite
 {
-    class SpriteBase
+    public class SpriteBase
     {
         protected Texture2D Texture { get; set; }
         private Rectangle Rectangle { get; set; }
