@@ -8,6 +8,7 @@ namespace GeometryFall.Sprite
 {
     public class SpriteBase
     {
+        public Vector2 Rotation { get; set; }
         protected Texture2D Texture { get; set; }
         private Rectangle Rectangle { get; set; }
 
@@ -19,7 +20,7 @@ namespace GeometryFall.Sprite
             }
             set
             {
-                Rectangle = new Rectangle(new Point(Rectangle.Width, Rectangle.Height), value);
+                Rectangle = new Rectangle(new Point(Rectangle.X, Rectangle.Y), value);
             }
         }
 
@@ -31,24 +32,34 @@ namespace GeometryFall.Sprite
             }
             set
             {
-                Rectangle = new Rectangle(value, new Point(Rectangle.X, Rectangle.Y));
+                Rectangle = new Rectangle(value, new Point(Rectangle.Width, Rectangle.Height));
             }
         }
 
-        public SpriteBase(Texture2D texture, Rectangle r)
+        public SpriteBase(Rectangle r)
         {
-            Texture = texture;
+            
             Rectangle = r;
         }
 
-        public SpriteBase(Texture2D texture, Point size, Point location) : this(texture, new Rectangle(size, location))
+        public SpriteBase(Point size, Point location) : this(new Rectangle(size, location))
         {
 
+        }
+
+        public void LoadTexture(Texture2D texture2D)
+        {
+            if (texture2D != null)
+            {
+                Texture = texture2D;
+                Rotation = new Vector2(Texture.Width, Texture.Height);
+            }
         }
 
         public void Draw(SpriteBatch sb, Color c)
         {
-            sb.Draw(this.Texture, this.Rectangle, c);
+            if (Texture != null) sb.Draw(this.Texture, this.Rectangle, null, c, 0f, Rotation, SpriteEffects.None, 0f);
+            
         }
         public void Draw(SpriteBatch sb)
         {
