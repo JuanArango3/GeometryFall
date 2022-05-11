@@ -11,6 +11,7 @@ namespace GeometryFall
         private SpriteBatch _spriteBatch;
 
         private Player player;
+        private Background bg;
 
         public Game1()
         {
@@ -19,13 +20,15 @@ namespace GeometryFall
             IsMouseVisible = true;
 
             _graphics.PreferredBackBufferWidth = 800;
-            _graphics.PreferredBackBufferHeight = 800;
+            _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
         }
 
         protected override void Initialize()
         {
             player = new Player();
+
+            bg = new Background();
 
             base.Initialize();
         }
@@ -36,6 +39,8 @@ namespace GeometryFall
 
             player.LoadTexture(Content.Load<Texture2D>("player1"));
             player.LoadTexture(Content.Load<Texture2D>("player2"));
+
+            bg.LoadTexture(Content.Load<Texture2D>("bg"));
         }
 
         protected override void Update(GameTime gameTime)
@@ -70,6 +75,8 @@ namespace GeometryFall
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
+
+            bg.Draw(_spriteBatch);
 
             player.Draw(_spriteBatch);
 

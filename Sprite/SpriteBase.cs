@@ -38,13 +38,12 @@ namespace GeometryFall.Sprite
 
         public SpriteBase(Rectangle r)
         {
-            
             Rectangle = r;
         }
 
         public SpriteBase(Point size, Point location) : this(new Rectangle(size, location))
         {
-
+            //
         }
 
         public void LoadTexture(Texture2D texture2D)

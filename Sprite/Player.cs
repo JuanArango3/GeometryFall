@@ -13,7 +13,7 @@ namespace GeometryFall.Sprite
     class Player : AnimatedSprite
     {
 
-        public Player() :base(new Point(50, 20), new Point(50, 50))
+        public Player() : base(new Point(50, 20), new Point(50, 50))
         {
             
         }

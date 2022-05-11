@@ -4,10 +4,12 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/bg.jpg</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player1.png</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player2.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>bg.jpg</File>
     <File>player1.png</File>
     <File>player2.png</File>
   </DestFiles>
