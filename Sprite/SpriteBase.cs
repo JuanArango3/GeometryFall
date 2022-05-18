@@ -10,7 +10,9 @@ namespace GeometryFall.Sprite
     {
         public Vector2 Rotation { get; set; }
         protected Texture2D Texture { get; set; }
-        private Rectangle Rectangle { get; set; }
+        public Rectangle Rectangle { get; set; }
+
+        protected SpriteEffects Effects { get; set; }
 
         public Point Size
         {
@@ -39,9 +41,10 @@ namespace GeometryFall.Sprite
         public SpriteBase(Rectangle r)
         {
             Rectangle = r;
+            Effects = SpriteEffects.None;
         }
 
-        public SpriteBase(Point size, Point location) : this(new Rectangle(size, location))
+        public SpriteBase(Point location, Point size) : this(new Rectangle(location, size))
         {
             //
         }
@@ -57,8 +60,8 @@ namespace GeometryFall.Sprite
 
         public void Draw(SpriteBatch sb, Color c)
         {
-            if (Texture != null) sb.Draw(this.Texture, this.Rectangle, null, c, 0f, Rotation, SpriteEffects.None, 0f);
-
+            if (Texture != null) sb.Draw(this.Texture, this.Rectangle, null, c, 0f, Rotation, Effects, 0f);
+            
         }
         public void Draw(SpriteBatch sb)
         {

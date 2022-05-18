@@ -15,6 +15,8 @@ namespace GeometryFall
         private Player player;
         private Background bg;
 
+        private PowerUpController puController;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -32,6 +34,8 @@ namespace GeometryFall
 
             bg = new Background();
 
+            puController = new PowerUpController();
+
             base.Initialize();
         }
 
@@ -44,6 +48,10 @@ namespace GeometryFall
 
             bg.LoadTexture(Content.Load<Texture2D>("bg"));
 
+            puController.LoadAssets(Content);
+
+            puController.spawnVelocityPowerUp(new Point(400, 400));
+
             defaultFont = Content.Load<SpriteFont>("Default");
         }
 
@@ -53,24 +61,26 @@ namespace GeometryFall
                 Exit();
 
             KeyboardState kbs = Keyboard.GetState();
-            if (kbs.IsKeyDown(Keys.Up))
+            if (kbs.IsKeyDown(Keys.Up) || kbs.IsKeyDown(Keys.W))
             {
-                player.Move(Direction.Up, gameTime);
+                player.Move(Direction.Up);
             }
-            if (kbs.IsKeyDown(Keys.Down))
+            if (kbs.IsKeyDown(Keys.Down) || kbs.IsKeyDown(Keys.S))
             {
-                player.Move(Direction.Down, gameTime);
-            }
-
-            if (kbs.IsKeyDown(Keys.Right))
-            {
-                player.Move(Direction.Right, gameTime);
-            }
-            if (kbs.IsKeyDown(Keys.Left))
-            {
-                player.Move(Direction.Left, gameTime);
+                player.Move(Direction.Down);
             }
 
+            if (kbs.IsKeyDown(Keys.Right) || kbs.IsKeyDown(Keys.D))
+            {
+                player.Move(Direction.Right);
+            }
+            if (kbs.IsKeyDown(Keys.Left) || kbs.IsKeyDown(Keys.A))
+            {
+                player.Move(Direction.Left);
+            }
+
+
+            puController.checkColisions(player);
             
 
             base.Update(gameTime);
@@ -85,6 +95,12 @@ namespace GeometryFall
             bg.Draw(_spriteBatch);
 
             player.Draw(_spriteBatch);
+
+            puController.draw(_spriteBatch);
+
+            string info = "X:" + player.Location.X + " Y:" + player.Location.Y + " Vel:" +player.Velocidad;
+
+            _spriteBatch.DrawString(defaultFont, info, new Vector2(0, 0), Color.White);
 
             _spriteBatch.End();
 

@@ -15,30 +15,44 @@ namespace GeometryFall.Sprite
 
         public Player() : base(new Point(50, 20), new Point(50, 50))
         {
-            
+            Velocidad = 8;
         }
 
-        public void Move(Direction direction, int amount, GameTime gt)
+        public int Velocidad { get; set; }
+
+        public void Move(Direction direction, int amount)
         {
+            Point tpoint;
             switch (direction)
             {
                 case Direction.Up:
-                    Location = new Point(Location.X, (int)(Location.Y - amount * gt.ElapsedGameTime.TotalMilliseconds));
+                    tpoint = new Point(Location.X, Location.Y - amount);
                     break;
                 case Direction.Down:
-                    Location = new Point(Location.X, (int)(Location.Y + amount * gt.ElapsedGameTime.TotalMilliseconds));
+                    tpoint = new Point(Location.X, Location.Y + amount);
                     break;
                 case Direction.Right:
-                    Location = new Point((int)(Location.X + amount * gt.ElapsedGameTime.TotalMilliseconds), Location.Y);
+                    tpoint = new Point(Location.X + amount, Location.Y);
+                    Effects = SpriteEffects.FlipHorizontally;
                     break;
                 case Direction.Left:
-                    Location = new Point((int)(Location.X - amount * gt.ElapsedGameTime.TotalMilliseconds), Location.Y);
+                    tpoint = new Point(Location.X - amount, Location.Y);
+                    Effects = SpriteEffects.None;
                     break;
+                default:
+                    throw new ArgumentException();
+
             }
+
+            if (tpoint.X > 750 || tpoint.X<0) return;
+            if (tpoint.Y > 550 || tpoint.Y < 0) return;
+
+            Location = tpoint;
+
         }
-        public void Move(Direction direction, GameTime gt)
+        public void Move(Direction direction)
         {
-            Move(direction, 10, gt);
+            Move(direction, Velocidad);
         }
 
         
