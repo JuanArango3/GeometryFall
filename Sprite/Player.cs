@@ -43,9 +43,10 @@ namespace GeometryFall.Sprite
                     throw new ArgumentException();
 
             }
-
-            if (tpoint.X > 750 || tpoint.X<0) return;
-            if (tpoint.Y > 550 || tpoint.Y < 0) return;
+            if (tpoint.X > 750) tpoint.X = 750;
+            if (tpoint.X<0) tpoint.X=0;
+            if (tpoint.Y > 550) tpoint.Y = 550;
+            if (tpoint.Y < 0) tpoint.Y=0;
 
             Location = tpoint;
 
