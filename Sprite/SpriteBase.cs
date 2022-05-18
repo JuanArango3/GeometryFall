@@ -58,7 +58,7 @@ namespace GeometryFall.Sprite
         public void Draw(SpriteBatch sb, Color c)
         {
             if (Texture != null) sb.Draw(this.Texture, this.Rectangle, null, c, 0f, Rotation, SpriteEffects.None, 0f);
-            
+
         }
         public void Draw(SpriteBatch sb)
         {

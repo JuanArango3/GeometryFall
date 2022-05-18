@@ -18,27 +18,27 @@ namespace GeometryFall.Sprite
             
         }
 
-        public void Move(Direction direction, int amount)
+        public void Move(Direction direction, int amount, GameTime gt)
         {
             switch (direction)
             {
                 case Direction.Up:
-                    Location = new Point(Location.X, Location.Y - amount);
+                    Location = new Point(Location.X, (int)(Location.Y - amount * gt.ElapsedGameTime.TotalMilliseconds));
                     break;
                 case Direction.Down:
-                    Location = new Point(Location.X, Location.Y + amount);
+                    Location = new Point(Location.X, (int)(Location.Y + amount * gt.ElapsedGameTime.TotalMilliseconds));
                     break;
                 case Direction.Right:
-                    Location = new Point(Location.X + amount, Location.Y);
+                    Location = new Point((int)(Location.X + amount * gt.ElapsedGameTime.TotalMilliseconds), Location.Y);
                     break;
                 case Direction.Left:
-                    Location = new Point(Location.X - amount, Location.Y);
+                    Location = new Point((int)(Location.X - amount * gt.ElapsedGameTime.TotalMilliseconds), Location.Y);
                     break;
             }
         }
-        public void Move(Direction direction)
+        public void Move(Direction direction, GameTime gt)
         {
-            Move(direction, 10);
+            Move(direction, 10, gt);
         }
 
         

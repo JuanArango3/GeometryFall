@@ -17,14 +17,14 @@ namespace GeometryFall.Sprite
             Animationcd = 10;
         }
         public AnimatedSprite(Point location, Point size) : this(new Rectangle(location, size))
-        {}
+        { }
 
         public void LoadTextures(List<Texture2D> textures)
         {
-            if (Textures==null)
+            if (Textures == null)
             {
                 Textures = textures;
-            } 
+            }
             else
             {
                 foreach (var item in textures)
@@ -35,7 +35,7 @@ namespace GeometryFall.Sprite
         }
         public new void LoadTexture(Texture2D texture)
         {
-            if (Textures==null)
+            if (Textures == null)
             {
                 Textures = new List<Texture2D>();
             }
@@ -43,11 +43,11 @@ namespace GeometryFall.Sprite
             Textures.Add(texture);
         }
 
-        private int cd=0;
+        private int cd = 0;
         public new void Draw(SpriteBatch sb)
         {
 
-            if (cd==Animationcd)
+            if (cd == Animationcd)
             {
                 if (ActualTexture < Textures.Count - 1)
                 {
