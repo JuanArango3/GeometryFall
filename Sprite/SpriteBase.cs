@@ -8,7 +8,7 @@ namespace GeometryFall.Sprite
 {
     public class SpriteBase
     {
-        public Vector2 Rotation { get; set; }
+        public Vector2 Origin { get; set; }
         protected Texture2D Texture { get; set; }
         public Rectangle Rectangle { get; set; }
 
@@ -54,13 +54,14 @@ namespace GeometryFall.Sprite
             if (texture2D != null)
             {
                 Texture = texture2D;
-                Rotation = new Vector2(Texture.Width, Texture.Height);
+                Origin = new Vector2(0,0);
             }
         }
 
         public void Draw(SpriteBatch sb, Color c)
         {
-            if (Texture != null) sb.Draw(this.Texture, this.Rectangle, null, c, 0f, Rotation, Effects, 0f);
+            if (Texture != null) sb.Draw(this.Texture, this.Rectangle, null, c, 0f, Origin, Effects, 0f);
+                
             
         }
         public void Draw(SpriteBatch sb)
