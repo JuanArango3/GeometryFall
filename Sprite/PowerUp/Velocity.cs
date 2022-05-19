@@ -17,9 +17,9 @@ namespace GeometryFall.Sprite.PowerUp
 
         public override void pickUp(Player p)
         {
-            p.Velocidad = p.Velocidad + 10;
+            p.Velocidad = p.Velocidad + 8;
 
-            
+            Task.Delay(5000).ContinueWith(t => p.Velocidad= p.Velocidad - 8);
         }
     }
 }
