@@ -1,3 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/pu_speed.png","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/pu_speed.xnb","TextureProcessor","Texture2DContent",48086,327269,0,4253293
-"C:/Users/Ender/source/repos/GeometryFall/Content/Default.spritefont","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/Default.xnb","FontDescriptionProcessor","SpriteFontContent",2024,21538,0,1737862
+"C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sounds/bgm1.mp3","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/bgm1.xnb","SongProcessor","SongContent",2884987,122,1,989598
+"C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sounds/bgm2.mp3","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/bgm2.xnb","SongProcessor","SongContent",1275579,122,1,472047

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace GeometryFall
 {
@@ -16,6 +17,8 @@ namespace GeometryFall
         private Background bg;
 
         private PowerUpController puController;
+
+        private MusicController musicController;
 
         public Game1()
         {
@@ -35,6 +38,7 @@ namespace GeometryFall
             bg = new Background();
 
             puController = new PowerUpController();
+            musicController = new MusicController();
 
             base.Initialize();
         }
@@ -53,6 +57,8 @@ namespace GeometryFall
             puController.spawnVelocityPowerUp(new Point(400, 400));
 
             defaultFont = Content.Load<SpriteFont>("Default");
+
+            musicController.loadSongs(Content, true);
         }
 
         protected override void Update(GameTime gameTime)
@@ -81,6 +87,8 @@ namespace GeometryFall
 
 
             puController.checkColisions(player);
+
+            
             
 
             base.Update(gameTime);
