@@ -15,7 +15,7 @@ namespace GeometryFall.Sprite.PowerUp
 
         }
 
-        public override void pickUp(Player p)
+        public override void doAction(Player p)
         {
             p.Velocidad = p.Velocidad + 8;
 
