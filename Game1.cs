@@ -66,6 +66,8 @@ namespace GeometryFall
             }
 
             puController.spawnPowerUp(0, new Point(400, 400));
+            puController.spawnPowerUp(0, new Point(200, 400));
+            puController.spawnPowerUp(0, new Point(100, 400));
         }
 
         protected override void Update(GameTime gameTime)
