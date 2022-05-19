@@ -1,6 +1,7 @@
 ﻿using GeometryFall.Sprite;
 using GeometryFall.Sprite.PowerUp;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -13,24 +14,41 @@ namespace GeometryFall
 {
     class PowerUpController
     {
-        private Texture2D velocityTexture;
+        //private Texture2D velocityTexture;
+        private List<Texture2D> textures;
+        private List<SoundEffect> sounds;
         private List<APowerUp> powerUps;
         public PowerUpController()
         {
+            textures = new List<Texture2D>();
+            sounds = new List<SoundEffect>();
             powerUps = new List<APowerUp>();
         }
 
         public void LoadAssets(ContentManager cm)
         {
-            velocityTexture = cm.Load<Texture2D>("pu_speed");
+            textures.Add( cm.Load<Texture2D>("pu_speed"));
+            sounds.Add( cm.Load<SoundEffect>("se1") );
         }
 
-
-        public void spawnVelocityPowerUp(Point p)
+        // 0 Velocity
+        public void spawnPowerUp(int type, Point p)
         {
-            Velocity vpu=new Velocity(p);
-            vpu.LoadTexture(velocityTexture);
-            powerUps.Add(vpu);
+            APowerUp powerUp;
+            switch (type)
+            {
+                case 0:
+                    powerUp = new Velocity(p);
+                    break;
+                default:
+                    throw new ArgumentException(type+  " is not a valid power up type") ;
+            }
+
+
+            powerUp.LoadTexture(textures[type]);
+            powerUp.setSoundEffect(sounds[type]);
+
+            powerUps.Add(powerUp);
         }
 
         public void draw(SpriteBatch sb)

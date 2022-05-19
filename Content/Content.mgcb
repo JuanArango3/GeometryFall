@@ -25,6 +25,12 @@
 /processorParam:Quality=Best
 /build:../Assets/Sounds/bgm2.mp3;bgm2.mp3
 
+#begin ../Assets/Sounds/se1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Assets/Sounds/se1.wav;se1.wav
+
 #begin ../Assets/Sprites/bg.jpg
 /importer:TextureImporter
 /processor:TextureProcessor

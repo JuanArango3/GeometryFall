@@ -47,6 +47,8 @@ namespace GeometryFall
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // TEXTURAS
+
             player.LoadTexture(Content.Load<Texture2D>("player1"));
             player.LoadTexture(Content.Load<Texture2D>("player2"));
 
@@ -54,11 +56,18 @@ namespace GeometryFall
 
             puController.LoadAssets(Content);
 
-            puController.spawnVelocityPowerUp(new Point(400, 400));
+            
 
             defaultFont = Content.Load<SpriteFont>("Default");
 
+            // SONIDOS
+
             musicController.loadSongs(Content, true);
+
+
+
+
+            puController.spawnPowerUp(0, new Point(400, 400));
         }
 
         protected override void Update(GameTime gameTime)
