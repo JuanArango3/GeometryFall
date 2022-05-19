@@ -47,25 +47,23 @@ namespace GeometryFall
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TEXTURAS
+            try
+            {
+                player.LoadTexture(Content.Load<Texture2D>("player1"));
+                player.LoadTexture(Content.Load<Texture2D>("player2"));
 
-            player.LoadTexture(Content.Load<Texture2D>("player1"));
-            player.LoadTexture(Content.Load<Texture2D>("player2"));
+                bg.LoadTexture(Content.Load<Texture2D>("bg"));
 
-            bg.LoadTexture(Content.Load<Texture2D>("bg"));
+                puController.LoadAssets(Content);
 
-            puController.LoadAssets(Content);
+                defaultFont = Content.Load<SpriteFont>("Default");
 
-            
-
-            defaultFont = Content.Load<SpriteFont>("Default");
-
-            // SONIDOS
-
-            musicController.loadSongs(Content, true);
-
-
-
+                musicController.loadSongs(Content, true);
+            }
+            catch
+            {
+                this.Exit();
+            }
 
             puController.spawnPowerUp(0, new Point(400, 400));
         }
