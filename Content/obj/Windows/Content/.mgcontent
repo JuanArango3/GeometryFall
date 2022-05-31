@@ -9,6 +9,7 @@
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sounds/se1.wav</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/bg.jpg</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/coin.png</File>
+    <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/gameover.png</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player1.png</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player2.png</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/pu_speed.png</File>
@@ -21,6 +22,7 @@
     <File>se1.wav</File>
     <File>bg.jpg</File>
     <File>coin.png</File>
+    <File>gameover.png</File>
     <File>player1.png</File>
     <File>player2.png</File>
     <File>pu_speed.png</File>

@@ -41,11 +41,7 @@ namespace GeometryFall
 
         public bool checkColision(Player p)
         {
-            foreach (var spike in spikes)
-            {
-                if (p.Rectangle.Intersects(spike.Rectangle)) return true;
-            }
-
+            foreach (var spike in spikes) if (p.Rectangle.Intersects(spike.Rectangle)) return true;
             return false;
         }
     }

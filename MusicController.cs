@@ -38,7 +38,7 @@ namespace GeometryFall
 
         private void StateSongChanged(object sender, EventArgs e)
         {
-            if (MediaPlayer.State == MediaState.Stopped || MediaPlayer.State == MediaState.Paused)
+            if (MediaPlayer.State == MediaState.Stopped)
             {
                 nextSong();
             }
@@ -55,6 +55,11 @@ namespace GeometryFall
         public void stop()
         {
             MediaPlayer.Stop();
+        }
+
+        public void Pause()
+        {
+            MediaPlayer.Pause();
         }
     }
 }

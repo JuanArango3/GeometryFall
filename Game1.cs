@@ -17,6 +17,7 @@ namespace GeometryFall
 
         private Player player;
         private Background bg;
+        private GameOver go;
 
         private PowerUpController puController;
 
@@ -47,6 +48,7 @@ namespace GeometryFall
             player = new Player();
 
             bg = new Background();
+            go = new GameOver();
 
             puController = new PowerUpController();
             spikesController = new SpikesController();
@@ -67,6 +69,7 @@ namespace GeometryFall
                 player.LoadTexture(Content.Load<Texture2D>("player2"));
 
                 bg.LoadTexture(Content.Load<Texture2D>("bg"));
+                go.LoadTexture(Content.Load<Texture2D>("gameover"));
 
                 puController.LoadAssets(Content);
 
@@ -133,6 +136,12 @@ namespace GeometryFall
                         coins.RemoveAt(i);
                     }
                 }
+
+                if (spikesController.checkColision(player))
+                {
+                    scene = -1;
+                    musicController.Pause();
+                }
             }
 
             base.Update(gameTime);
@@ -147,7 +156,7 @@ namespace GeometryFall
             switch (scene)
             {
                 case -1:
-
+                    go.Draw(_spriteBatch);
                     break;
                 case 0:
                     bg.Draw(_spriteBatch);
