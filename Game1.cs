@@ -20,6 +20,8 @@ namespace GeometryFall
 
         private PowerUpController puController;
 
+        private SpikesController spikesController;
+
         private MusicController musicController;
 
         private List<Coin> coins;
@@ -44,6 +46,7 @@ namespace GeometryFall
             bg = new Background();
 
             puController = new PowerUpController();
+            spikesController = new SpikesController();
             musicController = new MusicController();
 
             coins = new List<Coin>();
@@ -70,6 +73,8 @@ namespace GeometryFall
 
                 coinTexture = Content.Load<Texture2D>("coin");
                 score = 0;
+
+                spikesController.setTexture(Content.Load<Texture2D>("spike"));
             }
             catch
             {
@@ -81,6 +86,8 @@ namespace GeometryFall
             puController.spawnPowerUp(0, new Point(100, 200));
 
             coins.Add(new Coin(new Point(100,100), coinTexture));
+
+            spikesController.generateSpikes(new Point(100, 400), 5);
         }
 
         protected override void Update(GameTime gameTime)
@@ -139,7 +146,10 @@ namespace GeometryFall
 
             coins.ForEach((coin) => coin.Draw(_spriteBatch));
 
-            
+            spikesController.Draw(_spriteBatch);
+
+
+
 
             _spriteBatch.DrawString(defaultFont, "Score: "+Math.Round(score), new Vector2(0, 0), Color.White);
 

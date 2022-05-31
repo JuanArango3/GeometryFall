@@ -12,6 +12,7 @@
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player1.png</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/player2.png</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/pu_speed.png</File>
+    <File>C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/spike.png</File>
     <File>C:/Users/Ender/source/repos/GeometryFall/Content/Default.spritefont</File>
   </SourceFiles>
   <DestFiles>
@@ -23,6 +24,7 @@
     <File>player1.png</File>
     <File>player2.png</File>
     <File>pu_speed.png</File>
+    <File>spike.png</File>
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
