@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GeometryFall.Sprite
 {
-    public class SpriteBase
+    public class SpriteBase : ISprite
     {
         public Vector2 Origin { get; set; }
         protected Texture2D Texture { get; set; }
@@ -46,7 +46,7 @@ namespace GeometryFall.Sprite
 
         public SpriteBase(Point location, Point size) : this(new Rectangle(location, size))
         {
-            //
+            
         }
 
         public void LoadTexture(Texture2D texture2D)
