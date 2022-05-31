@@ -2,8 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace GeometryFall
@@ -30,6 +30,8 @@ namespace GeometryFall
         private Texture2D coinTexture;
 
         private int scene;
+
+        private string path = "C:/Users/Ender/Documents/geometryfall.txt";
 
         public Game1()
         {
@@ -81,6 +83,12 @@ namespace GeometryFall
                 score = 0;
 
                 spikesController.setTexture(Content.Load<Texture2D>("spike"));
+
+                if (!File.Exists(path))
+                {
+                    File.WriteAllText(path, "0");
+                }
+                
             }
             catch
             {
@@ -94,6 +102,8 @@ namespace GeometryFall
             coins.Add(new Coin(new Point(100,100), coinTexture));
 
             spikesController.generateSpikes(new Point(100, 400), 5);
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -141,6 +151,11 @@ namespace GeometryFall
                 {
                     scene = -1;
                     musicController.Pause();
+
+                    if (score > int.Parse(File.ReadAllText(path)))
+                    {
+                        File.WriteAllText(path, Math.Round(score).ToString());
+                    }
                 }
             }
 
@@ -157,6 +172,8 @@ namespace GeometryFall
             {
                 case -1:
                     go.Draw(_spriteBatch);
+                    _spriteBatch.DrawString(defaultFont, "Score: " + Math.Round(score), new Vector2(400, 50), Color.White);
+                    _spriteBatch.DrawString(defaultFont, "Best score: " + Math.Round(score), new Vector2(400, 65), Color.White);
                     break;
                 case 0:
                     bg.Draw(_spriteBatch);
