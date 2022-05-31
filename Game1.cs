@@ -28,6 +28,8 @@ namespace GeometryFall
         private double score;
         private Texture2D coinTexture;
 
+        private int scene;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -41,6 +43,7 @@ namespace GeometryFall
 
         protected override void Initialize()
         {
+            scene = 0;
             player = new Player();
 
             bg = new Background();
@@ -92,40 +95,43 @@ namespace GeometryFall
 
         protected override void Update(GameTime gameTime)
         {
-            score += gameTime.ElapsedGameTime.TotalMilliseconds/1000;
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            KeyboardState kbs = Keyboard.GetState();
-            if (kbs.IsKeyDown(Keys.Up) || kbs.IsKeyDown(Keys.W))
+            if (scene!=-1)
             {
-                player.Move(Direction.Up);
-            }
-            if (kbs.IsKeyDown(Keys.Down) || kbs.IsKeyDown(Keys.S))
-            {
-                player.Move(Direction.Down);
-            }
+                score += gameTime.ElapsedGameTime.TotalMilliseconds / 1000;
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    Exit();
 
-            if (kbs.IsKeyDown(Keys.Right) || kbs.IsKeyDown(Keys.D))
-            {
-                player.Move(Direction.Right);
-            }
-            if (kbs.IsKeyDown(Keys.Left) || kbs.IsKeyDown(Keys.A))
-            {
-                player.Move(Direction.Left);
-            }
-
-
-            puController.checkColisions(player);
-
-            for (int i = 0; i < coins.Count; i++)
-            {
-                Coin coin = coins[i];
-
-                if (player.Rectangle.Intersects(coin.Rectangle))
+                KeyboardState kbs = Keyboard.GetState();
+                if (kbs.IsKeyDown(Keys.Up) || kbs.IsKeyDown(Keys.W))
                 {
-                    score += 10;
-                    coins.RemoveAt(i);
+                    player.Move(Direction.Up);
+                }
+                if (kbs.IsKeyDown(Keys.Down) || kbs.IsKeyDown(Keys.S))
+                {
+                    player.Move(Direction.Down);
+                }
+
+                if (kbs.IsKeyDown(Keys.Right) || kbs.IsKeyDown(Keys.D))
+                {
+                    player.Move(Direction.Right);
+                }
+                if (kbs.IsKeyDown(Keys.Left) || kbs.IsKeyDown(Keys.A))
+                {
+                    player.Move(Direction.Left);
+                }
+
+
+                puController.checkColisions(player);
+
+                for (int i = 0; i < coins.Count; i++)
+                {
+                    Coin coin = coins[i];
+
+                    if (player.Rectangle.Intersects(coin.Rectangle))
+                    {
+                        score += 10;
+                        coins.RemoveAt(i);
+                    }
                 }
             }
 
@@ -138,20 +144,29 @@ namespace GeometryFall
 
             _spriteBatch.Begin();
 
-            bg.Draw(_spriteBatch);
+            switch (scene)
+            {
+                case -1:
 
-            player.Draw(_spriteBatch);
+                    break;
+                case 0:
+                    bg.Draw(_spriteBatch);
 
-            puController.draw(_spriteBatch);
+                    player.Draw(_spriteBatch);
 
-            coins.ForEach((coin) => coin.Draw(_spriteBatch));
+                    puController.draw(_spriteBatch);
 
-            spikesController.Draw(_spriteBatch);
+                    coins.ForEach((coin) => coin.Draw(_spriteBatch));
 
+                    spikesController.Draw(_spriteBatch);
 
+                    _spriteBatch.DrawString(defaultFont, "Score: " + Math.Round(score), new Vector2(0, 0), Color.White);
+                    break;
+                default:
+                    break;
+            }
 
-
-            _spriteBatch.DrawString(defaultFont, "Score: "+Math.Round(score), new Vector2(0, 0), Color.White);
+            
 
             _spriteBatch.End();
 
