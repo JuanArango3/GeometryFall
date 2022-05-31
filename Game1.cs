@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
+using System.Collections.Generic;
 
 namespace GeometryFall
 {
@@ -19,6 +21,10 @@ namespace GeometryFall
         private PowerUpController puController;
 
         private MusicController musicController;
+
+        private List<Coin> coins;
+        private double score;
+        private Texture2D coinTexture;
 
         public Game1()
         {
@@ -40,6 +46,8 @@ namespace GeometryFall
             puController = new PowerUpController();
             musicController = new MusicController();
 
+            coins = new List<Coin>();
+
             base.Initialize();
         }
 
@@ -59,19 +67,25 @@ namespace GeometryFall
                 defaultFont = Content.Load<SpriteFont>("Default");
 
                 musicController.loadSongs(Content, true);
+
+                coinTexture = Content.Load<Texture2D>("coin");
+                score = 0;
             }
             catch
             {
                 this.Exit();
             }
 
-            puController.spawnPowerUp(0, new Point(400, 400));
-            puController.spawnPowerUp(0, new Point(200, 400));
-            puController.spawnPowerUp(0, new Point(100, 400));
+            puController.spawnPowerUp(0, new Point(400, 200));
+            puController.spawnPowerUp(0, new Point(200, 200));
+            puController.spawnPowerUp(0, new Point(100, 200));
+
+            coins.Add(new Coin(new Point(100,100), coinTexture));
         }
 
         protected override void Update(GameTime gameTime)
         {
+            score += gameTime.ElapsedGameTime.TotalMilliseconds/1000;
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -97,8 +111,16 @@ namespace GeometryFall
 
             puController.checkColisions(player);
 
-            
-            
+            for (int i = 0; i < coins.Count; i++)
+            {
+                Coin coin = coins[i];
+
+                if (player.Rectangle.Intersects(coin.Rectangle))
+                {
+                    score += 10;
+                    coins.RemoveAt(i);
+                }
+            }
 
             base.Update(gameTime);
         }
@@ -115,9 +137,11 @@ namespace GeometryFall
 
             puController.draw(_spriteBatch);
 
-            string info = "X:" + player.Location.X + " Y:" + player.Location.Y + " Vel:" +player.Velocidad;
+            coins.ForEach((coin) => coin.Draw(_spriteBatch));
 
-            _spriteBatch.DrawString(defaultFont, info, new Vector2(0, 0), Color.White);
+            
+
+            _spriteBatch.DrawString(defaultFont, "Score: "+Math.Round(score), new Vector2(0, 0), Color.White);
 
             _spriteBatch.End();
 

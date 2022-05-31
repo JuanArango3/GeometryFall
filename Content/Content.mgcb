@@ -43,6 +43,18 @@
 /processorParam:TextureFormat=Color
 /build:../Assets/Sprites/bg.jpg;bg.jpg
 
+#begin ../Assets/Sprites/coin.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../Assets/Sprites/coin.png;coin.png
+
 #begin ../Assets/Sprites/player1.png
 /importer:TextureImporter
 /processor:TextureProcessor

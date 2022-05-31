@@ -1,2 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sounds/se1.wav","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/se1.xnb","SoundEffectProcessor","SoundEffectContent",247230,246605,1,097426
+"C:/Users/Ender/source/repos/GeometryFall/Content/../Assets/Sprites/coin.png","C:/Users/Ender/source/repos/GeometryFall/Content/bin/Windows/coin.xnb","TextureProcessor","Texture2DContent",10337,1401941,0,4254305
