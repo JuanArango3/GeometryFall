@@ -28,7 +28,9 @@ namespace GeometryFall
         public void LoadAssets(ContentManager cm)
         {
             textures.Add( cm.Load<Texture2D>("pu_speed"));
+            textures.Add( cm.Load<Texture2D>("pu_x2") );
             sounds.Add( cm.Load<SoundEffect>("se1") );
+            sounds.Add(cm.Load<SoundEffect>("se1")); // TODO
         }
 
         // 0 Velocity
@@ -39,6 +41,9 @@ namespace GeometryFall
             {
                 case 0:
                     powerUp = new Velocity(p);
+                    break;
+                case 1:
+                    powerUp = new ScoreMultiplier(p);
                     break;
                 default:
                     throw new ArgumentException(type+  " is not a valid power up type") ;

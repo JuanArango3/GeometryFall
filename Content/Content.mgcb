@@ -103,6 +103,18 @@
 /processorParam:TextureFormat=Color
 /build:../Assets/Sprites/pu_speed.png;pu_speed.png
 
+#begin ../Assets/Sprites/pu_x2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../Assets/Sprites/pu_x2.png;pu_x2.png
+
 #begin ../Assets/Sprites/spike.png
 /importer:TextureImporter
 /processor:TextureProcessor

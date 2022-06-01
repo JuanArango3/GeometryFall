@@ -96,7 +96,7 @@ namespace GeometryFall
             }
 
             puController.spawnPowerUp(0, new Point(400, 200));
-            puController.spawnPowerUp(0, new Point(200, 200));
+            puController.spawnPowerUp(1, new Point(200, 200));
             puController.spawnPowerUp(0, new Point(100, 200));
 
             coins.Add(new Coin(new Point(100,100), coinTexture));
@@ -110,7 +110,7 @@ namespace GeometryFall
         {
             if (scene!=-1)
             {
-                score += gameTime.ElapsedGameTime.TotalMilliseconds / 1000;
+                score += (gameTime.ElapsedGameTime.TotalMilliseconds / 1000)*player.ScoreMultiplier;
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
 

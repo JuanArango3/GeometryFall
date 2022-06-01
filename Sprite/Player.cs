@@ -16,9 +16,12 @@ namespace GeometryFall.Sprite
         public Player() : base(new Point(390, 20), new Point(50, 50))
         {
             Velocidad = 8;
+            ScoreMultiplier = 1;
         }
 
         public int Velocidad { get; set; }
+
+        public float ScoreMultiplier { get; set; }
 
         public void Move(Direction direction, int amount)
         {
