@@ -9,5 +9,11 @@ namespace GeometryFall.Sprite
         {
             LoadTexture(texture);
         }
+
+        public new void Draw(SpriteBatch sb)
+        {
+            this.Location = new Point(Location.X, Location.Y-2);
+            base.Draw(sb);
+        }
     }
 }

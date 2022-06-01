@@ -102,6 +102,12 @@ namespace GeometryFall
             coins.Add(new Coin(new Point(100,100), coinTexture));
 
             spikesController.generateSpikes(new Point(100, 400), 5);
+            spikesController.generateSpikes(new Point(0, 500), 8);
+            spikesController.generateSpikes(new Point(500, 600), 5);
+            spikesController.generateSpikes(new Point(200, 800), 5);
+            spikesController.generateSpikes(new Point(100, 1000), 5);
+            spikesController.generateSpikes(new Point(400, 1240), 5);
+            spikesController.generateSpikes(new Point(000, 1400), 20);
 
 
         }
@@ -173,7 +179,7 @@ namespace GeometryFall
                 case -1:
                     go.Draw(_spriteBatch);
                     _spriteBatch.DrawString(defaultFont, "Score: " + Math.Round(score), new Vector2(400, 50), Color.White);
-                    _spriteBatch.DrawString(defaultFont, "Best score: " + Math.Round(score), new Vector2(400, 65), Color.White);
+                    _spriteBatch.DrawString(defaultFont, "Best score: " + int.Parse(File.ReadAllText(path)), new Vector2(400, 65), Color.White);
                     break;
                 case 0:
                     bg.Draw(_spriteBatch);
